@@ -1,6 +1,7 @@
-# Ignore API keys
+# Ignore API keys and environment files
 api_key.txt
-.env.example
+.env
+env/
 
 # Ignore node_modules folder
 node_modules/
@@ -8,3 +9,9 @@ config/
 
 # Ignore log files
 *.log
+
+# Ignore Python cache
+__pycache__/
+
+# Do not ignore .env.example
+!.env.example
