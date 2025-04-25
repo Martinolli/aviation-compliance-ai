@@ -1,0 +1,10 @@
+# Ignore API keys
+api_key.txt
+.env.example
+
+# Ignore node_modules folder
+node_modules/
+config/
+
+# Ignore log files
+*.log
