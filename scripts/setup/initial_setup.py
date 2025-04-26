@@ -164,16 +164,26 @@ def check_dependencies():
     
     # Check Node.js dependencies if package.json exists
     package_json = base_dir / "package.json"
-    if package_json.exists() and shutil.which("npm"):
+    if package_json.exists():
         try:
-            subprocess.run(["npm", "list", "--depth=0"], cwd=base_dir, check=False)
-        except subprocess.SubprocessError:
-            print("\nSome Node.js dependencies may be missing. Install them with:")
-            print("npm install")
-    elif package_json.exists():
-        print("✗ package.json found but npm is not installed")
+            result = subprocess.run(["npm", "--version"], check=False, capture_output=True, text=True)
+            if result.returncode == 0:
+                print(f"✓ npm version {result.stdout.strip()} found")
+                try:
+                    result = subprocess.run(["npm", "list", "--depth=0"], cwd=base_dir, check=False, capture_output=True, text=True)
+                    if result.returncode == 0:
+                        print("✓ Node.js dependencies are installed")
+                    else:
+                        print("✗ Some Node.js dependencies may be missing. Install them with:")
+                        print("npm install")
+                except subprocess.SubprocessError:
+                    print("✗ Error running npm list. Make sure npm is correctly installed.")
+            else:
+                print("✗ npm not found. Please install Node.js and npm.")
+        except FileNotFoundError:
+            print("✗ npm not found. Please install Node.js and npm and ensure they are in your system PATH.")
     else:
-        print("✗ package.json not found")
+        print("ℹ package.json not found. Skipping Node.js dependency check.")
 
 def check_environment_variables():
     """Check if required environment variables are set."""
