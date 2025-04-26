@@ -78,6 +78,7 @@ This document outlines a systematic approach to refactoring the Aviation Complia
 ### Component Interfaces
 
 #### 1. Document Processing Interface
+
 ```python
 class DocumentProcessor:
     """Interface for document processing components."""
@@ -96,6 +97,7 @@ class ProcessedDocument:
 ```
 
 #### 2. Embedding Generation Interface
+
 ```python
 class EmbeddingGenerator:
     """Interface for embedding generation components."""
@@ -110,6 +112,7 @@ class EmbeddingGenerator:
 ```
 
 #### 3. Vector Database Interface
+
 ```python
 class VectorDatabase:
     """Interface for vector database operations."""
@@ -128,6 +131,7 @@ class VectorDatabase:
 ```
 
 #### 4. Retrieval Interface
+
 ```python
 class Retriever:
     """Interface for retrieval components."""
@@ -138,6 +142,7 @@ class Retriever:
 ```
 
 #### 5. Generation Interface
+
 ```python
 class Generator:
     """Interface for response generation components."""
@@ -152,17 +157,20 @@ class Generator:
 ### Phase 1: Foundation Setup (Week 1)
 
 #### 1. Project Structure Creation
+
 - Create the new directory structure
 - Set up version control with branching strategy
 - Implement basic CI/CD pipeline
 
 #### 2. Core Module Implementation
+
 - Create configuration management module
 - Implement logging framework
 - Define custom exception classes
 - Develop utility functions
 
 #### 3. Interface Definition
+
 - Define interfaces for all major components
 - Create abstract base classes
 - Document interface contracts
@@ -170,6 +178,7 @@ class Generator:
 ### Phase 2: Component Migration (Weeks 2-3)
 
 #### 1. Document Processing Migration
+
 - Refactor document reading functionality
   - Extract from `read_documents.py` to `src/data/readers/`
   - Create format-specific readers (PDF, DOCX)
@@ -186,6 +195,7 @@ class Generator:
   - Add regulatory structure awareness
 
 #### 2. Embedding Generation Migration
+
 - Refactor embedding generation
   - Extract from `generate_embeddings.js` to `src/embeddings/generators/`
   - Create Python implementation with same functionality
@@ -197,6 +207,7 @@ class Generator:
   - Implement batch processing
 
 #### 3. Storage Migration
+
 - Refactor vector database operations
   - Extract from `store_embeddings_astra.js` to `src/storage/vector_db/`
   - Create AstraDB adapter implementation
@@ -210,18 +221,21 @@ class Generator:
 ### Phase 3: Pipeline Integration (Week 4)
 
 #### 1. Retrieval Migration
+
 - Refactor retrieval mechanism
   - Extract from `aviationai.py` to `src/retrieval/engines/`
   - Implement hybrid search capabilities
   - Add result ranking and filtering
 
 #### 2. Generation Migration
+
 - Refactor response generation
   - Extract from `aviationai.py` to `src/generation/`
   - Implement prompt template management
   - Add response validation and formatting
 
 #### 3. Pipeline Manager Refactoring
+
 - Refactor pipeline manager
   - Extract from `aviationrag_manager.py` to core module
   - Implement modular pipeline configuration
@@ -230,16 +244,19 @@ class Generator:
 ### Phase 4: Testing and Documentation (Week 5)
 
 #### 1. Test Suite Implementation
+
 - Create unit tests for all components
 - Implement integration tests for the pipeline
 - Add performance benchmarks
 
 #### 2. Documentation
+
 - Create API documentation
 - Write developer guide
 - Create architecture diagrams
 
 #### 3. Migration Validation
+
 - Verify functionality matches original system
 - Benchmark performance against original system
 - Address any regressions or issues
@@ -249,6 +266,7 @@ class Generator:
 ### 1. aviationai.py
 
 #### Current Functionality
+
 - OpenAI client initialization
 - Embedding generation
 - Document retrieval
@@ -256,6 +274,7 @@ class Generator:
 - Chat loop management
 
 #### Migration Plan
+
 1. Extract configuration to `src/core/config.py`
 2. Move embedding generation to `src/embeddings/generators/openai_generator.py`
 3. Refactor retrieval to `src/retrieval/engines/faiss_retriever.py`
@@ -266,12 +285,14 @@ class Generator:
 ### 2. read_documents.py
 
 #### Current Functionality
+
 - Document reading from PDF and DOCX
 - Text preprocessing
 - Entity extraction
 - Document classification
 
 #### Migration Plan
+
 1. Create format-specific readers:
    - `src/data/readers/pdf_reader.py`
    - `src/data/readers/docx_reader.py`
@@ -286,12 +307,14 @@ class Generator:
 ### 3. generate_embeddings.js
 
 #### Current Functionality
+
 - OpenAI embedding generation
 - Batch processing
 - Checkpoint saving
 - CSV report generation
 
 #### Migration Plan
+
 1. Create Python implementation in `src/embeddings/generators/openai_generator.py`
 2. Implement batch processing in `src/embeddings/batch_processor.py`
 3. Add checkpoint management in `src/core/checkpoint_manager.py`
@@ -300,11 +323,13 @@ class Generator:
 ### 4. store_embeddings_astra.js
 
 #### Current Functionality
+
 - AstraDB connection
 - Embedding storage
 - Duplicate checking
 
 #### Migration Plan
+
 1. Create AstraDB adapter in `src/storage/vector_db/astra_adapter.py`
 2. Implement embedding storage manager in `src/storage/embedding_storage.py`
 3. Add duplicate detection in `src/storage/duplicate_detector.py`
@@ -312,11 +337,13 @@ class Generator:
 ### 5. aviationrag_manager.py
 
 #### Current Functionality
+
 - Pipeline orchestration
 - Script execution
 - Logging and reporting
 
 #### Migration Plan
+
 1. Create pipeline manager in `src/core/pipeline_manager.py`
 2. Implement task scheduler in `src/core/task_scheduler.py`
 3. Add execution tracker in `src/core/execution_tracker.py`
@@ -325,8 +352,10 @@ class Generator:
 ## Dependency Management
 
 ### Python Dependencies
+
 Create `requirements.txt` with:
-```
+
+```batch
 openai>=1.0.0
 numpy>=1.20.0
 pandas>=1.3.0
@@ -344,7 +373,9 @@ pytest>=6.2.5
 ```
 
 ### JavaScript Dependencies
+
 Create `package.json` with:
+
 ```json
 {
   "dependencies": {
@@ -362,8 +393,10 @@ Create `package.json` with:
 ## Configuration Management
 
 ### Environment Variables
+
 Create `.env.example` with:
-```
+
+```batch
 # OpenAI Configuration
 OPENAI_API_KEY=your_openai_api_key
 
@@ -379,7 +412,9 @@ LOG_LEVEL=INFO
 ```
 
 ### Configuration File
+
 Create `config/default.yaml` with:
+
 ```yaml
 application:
   name: Aviation Compliance AI
@@ -414,6 +449,7 @@ generation:
 ## Error Handling Strategy
 
 ### Custom Exception Hierarchy
+
 ```python
 class AviationComplianceError(Exception):
     """Base exception for all Aviation Compliance AI errors."""
@@ -445,6 +481,7 @@ class GenerationError(AviationComplianceError):
 ```
 
 ### Error Handling Pattern
+
 ```python
 def process_with_retries(func, *args, max_retries=3, **kwargs):
     """Execute a function with retry logic."""
@@ -464,6 +501,7 @@ def process_with_retries(func, *args, max_retries=3, **kwargs):
 ## Logging Strategy
 
 ### Logging Configuration
+
 ```python
 import logging
 import os
@@ -509,6 +547,7 @@ def setup_logging(log_dir, log_level=logging.INFO):
 ## Testing Strategy
 
 ### Unit Testing
+
 ```python
 # Example unit test for document processor
 import pytest
@@ -523,6 +562,7 @@ def test_text_cleaner_removes_special_characters():
 ```
 
 ### Integration Testing
+
 ```python
 # Example integration test for document processing pipeline
 import pytest
@@ -556,26 +596,32 @@ def test_document_processing_pipeline():
 ## Implementation Timeline
 
 ### Week 1: Foundation Setup
+
 - Day 1-2: Create project structure and core modules
+
 - Day 3-4: Define interfaces and abstract classes
 - Day 5: Set up CI/CD pipeline and testing framework
 
 ### Week 2: Document Processing Migration
+
 - Day 1-2: Implement document readers
 - Day 3-4: Create text processors
 - Day 5: Develop chunking strategies
 
 ### Week 3: Embedding and Storage Migration
+
 - Day 1-2: Implement embedding generators
 - Day 3-4: Create storage adapters
 - Day 5: Develop caching and optimization
 
 ### Week 4: Pipeline Integration
+
 - Day 1-2: Implement retrieval components
 - Day 3-4: Create generation components
 - Day 5: Develop pipeline manager
 
 ### Week 5: Testing and Documentation
+
 - Day 1-2: Write unit and integration tests
 - Day 3-4: Create documentation
 - Day 5: Validate migration and fix issues
@@ -585,6 +631,7 @@ def test_document_processing_pipeline():
 This refactoring approach provides a systematic path to transform the Aviation Compliance AI codebase into a modular, maintainable, and extensible architecture. By following this incremental approach, the system can be improved while maintaining functionality throughout the refactoring process.
 
 The new architecture will provide several benefits:
+
 1. Clear separation of concerns with well-defined interfaces
 2. Improved maintainability through modular design
 3. Enhanced extensibility for adding new features
