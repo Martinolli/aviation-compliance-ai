@@ -1,11 +1,13 @@
 # Code Structure Refactoring Approach
 
 ## Overview
+
 This document outlines a systematic approach to refactoring the Aviation Compliance AI codebase, transforming it from its current mixed Python/JavaScript implementation with overlapping functionality into a modular, maintainable, and extensible architecture. The refactoring will be implemented incrementally to ensure continuous functionality while improving the system.
 
 ## Current Architecture Assessment
 
 ### Strengths
+
 - Functional RAG pipeline implementation
 - Working document processing capabilities
 - Effective embedding generation and storage
@@ -13,6 +15,7 @@ This document outlines a systematic approach to refactoring the Aviation Complia
 - Basic visualization capabilities
 
 ### Limitations
+
 - Mixed Python and JavaScript with duplicated functionality
 - Hardcoded paths and configuration
 - Inconsistent error handling
@@ -23,7 +26,8 @@ This document outlines a systematic approach to refactoring the Aviation Complia
 ## Target Architecture
 
 ### Directory Structure
-```
+
+```batch
 /aviation-compliance-ai/
 ├── src/
 │   ├── core/                  # Core RAG functionality
@@ -284,14 +288,14 @@ class Generator:
 
 ### 2. read_documents.py
 
-#### Current Functionality
+#### Current Functionality 2
 
 - Document reading from PDF and DOCX
 - Text preprocessing
 - Entity extraction
 - Document classification
 
-#### Migration Plan
+#### Migration Plan 2
 
 1. Create format-specific readers:
    - `src/data/readers/pdf_reader.py`
@@ -306,14 +310,14 @@ class Generator:
 
 ### 3. generate_embeddings.js
 
-#### Current Functionality
+#### Current Functionality 3
 
 - OpenAI embedding generation
 - Batch processing
 - Checkpoint saving
 - CSV report generation
 
-#### Migration Plan
+#### Migration Plan 3
 
 1. Create Python implementation in `src/embeddings/generators/openai_generator.py`
 2. Implement batch processing in `src/embeddings/batch_processor.py`
@@ -322,13 +326,13 @@ class Generator:
 
 ### 4. store_embeddings_astra.js
 
-#### Current Functionality
+#### Current Functionality 4
 
 - AstraDB connection
 - Embedding storage
 - Duplicate checking
 
-#### Migration Plan
+#### Migration Plan 4
 
 1. Create AstraDB adapter in `src/storage/vector_db/astra_adapter.py`
 2. Implement embedding storage manager in `src/storage/embedding_storage.py`
@@ -336,13 +340,13 @@ class Generator:
 
 ### 5. aviationrag_manager.py
 
-#### Current Functionality
+#### Current Functionality 5
 
 - Pipeline orchestration
 - Script execution
 - Logging and reporting
 
-#### Migration Plan
+#### Migration Plan 5
 
 1. Create pipeline manager in `src/core/pipeline_manager.py`
 2. Implement task scheduler in `src/core/task_scheduler.py`

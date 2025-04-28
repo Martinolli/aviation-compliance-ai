@@ -46,7 +46,7 @@ This document outlines the prioritized approach for integrating FAA and EASA reg
 
 ### 2. Project Certification
 
-#### FAA Regulations (Highest Priority)
+#### FAA Regulations (Highest Priority) 2
 
 1. **14 CFR Part 21 Subpart B** - Type Certificates
    - § 21.15 - Application for type certificate
@@ -64,7 +64,7 @@ This document outlines the prioritized approach for integrating FAA and EASA reg
    - Chapter 6: Type Inspection Authorization
    - Chapter 7: Type Certification Process
 
-#### EASA Regulations (Secondary Priority)
+#### EASA Regulations (Secondary Priority) 3
 
 1. **Part 21 Subpart B** - Type-certificates and restricted type-certificates
    - 21.A.15 - Application
@@ -239,7 +239,7 @@ This document outlines the prioritized approach for integrating FAA and EASA reg
 
 ### Project Certification
 
-#### Key Requirements to Prioritize
+#### Key Requirements to Prioritize 1
 
 1. **Type Certification Basis**
    - FAA § 21.17 vs. EASA 21.A.17A

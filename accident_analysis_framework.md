@@ -560,13 +560,13 @@ class AccidentCitationManager:
 
 ### 2. Thematic Analysis Queries
 
-#### Example Queries
+#### Example Queries 1
 
 - "What are common human factors in maintenance-related accidents?"
 - "Show me patterns in design organization certification issues that led to accidents."
 - "What are recurring issues in cockpit resource management accidents?"
 
-#### Response Pattern
+#### Response Pattern 1
 
 1. **Pattern Identification**
    - Common factors across accidents
@@ -590,13 +590,13 @@ class AccidentCitationManager:
 
 ### 3. Regulatory Compliance Queries
 
-#### Example Queries
+#### Example Queries 2
 
 - "What accidents have occurred due to non-compliance with FAR Part 21 Subpart J?"
 - "How have EASA design organization requirements prevented accidents?"
 - "What are the safety implications of this regulatory requirement?"
 
-#### Response Pattern
+#### Response Pattern 2
 
 1. **Regulatory Context**
    - Explanation of the regulation
@@ -620,13 +620,13 @@ class AccidentCitationManager:
 
 ### 4. Safety Recommendation Queries
 
-#### Example Queries
+#### Example Queries 4
 
 - "What safety recommendations exist for design organization certification?"
 - "How should we implement lessons from recent certification-related accidents?"
 - "What are best practices for preventing human factors issues in design organizations?"
 
-#### Response Pattern
+#### Response Pattern 4
 
 1. **Recommendation Summary**
    - Key recommendations
