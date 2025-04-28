@@ -98,7 +98,8 @@ aviation-compliance-ai/
 ### 1. Project Configuration Files
 
 #### `.env.example`
-```
+
+```batch
 # OpenAI API Configuration
 OPENAI_API_KEY=your_openai_api_key
 
@@ -114,7 +115,8 @@ LOG_LEVEL=INFO
 ```
 
 #### `requirements.txt`
-```
+
+```batch
 # Core dependencies
 python-dotenv>=0.19.0
 pydantic>=1.9.0
@@ -153,6 +155,7 @@ tqdm>=4.62.0
 ```
 
 #### `package.json`
+
 ```json
 {
   "name": "aviation-compliance-ai",
@@ -181,6 +184,7 @@ tqdm>=4.62.0
 ```
 
 #### `README.md`
+
 ```markdown
 # Aviation Compliance AI
 
@@ -205,29 +209,34 @@ An intelligent assistant for aviation compliance, focusing on FAA and EASA regul
 
 ### Installation
 
-1. Clone the repository
-   ```
+1.Clone the repository
+
+   ```batch
    git clone https://github.com/yourusername/aviation-compliance-ai.git
    cd aviation-compliance-ai
    ```
 
-2. Install Python dependencies
-   ```
+2.Install Python dependencies
+
+   ```batch
    pip install -r requirements.txt
    ```
 
-3. Install JavaScript dependencies
-   ```
+3.Install JavaScript dependencies
+
+   ```batch
    npm install
    ```
 
-4. Copy the example environment file and update with your credentials
-   ```
+4.Copy the example environment file and update with your credentials
+
+   ```batch
    cp .env.example .env
    ```
 
-5. Run the setup script
-   ```
+5.Run the setup script
+
+   ```batch
    python scripts/setup/initial_setup.py
    ```
 
@@ -235,19 +244,19 @@ An intelligent assistant for aviation compliance, focusing on FAA and EASA regul
 
 ### Processing Documents
 
-```
+```python
 python scripts/data/process_documents.py --source data/raw/faa --output data/processed/faa
 ```
 
 ### Generating Embeddings
 
-```
+```python
 python scripts/data/generate_embeddings.py --source data/processed/faa --output data/embeddings/faa
 ```
 
 ### Running the Web Interface
 
-```
+```python
 npm run start
 ```
 
@@ -255,7 +264,7 @@ npm run start
 
 ### Running Tests
 
-```
+```python
 pytest tests/
 ```
 
@@ -266,11 +275,13 @@ This project follows PEP 8 for Python code and Airbnb style guide for JavaScript
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
+
+```batch
 
 ### 2. Core Module Files
 
 #### `src/core/config/config.py`
+
 ```python
 """Configuration management for Aviation Compliance AI."""
 
@@ -384,7 +395,8 @@ class Config:
 config = Config()
 ```
 
-#### `src/core/logging/logger.py`
+### `src/core/logging/logger.py`
+
 ```python
 """Logging configuration for Aviation Compliance AI."""
 
@@ -481,7 +493,8 @@ def get_logger(name: str = None) -> logging.Logger:
     return logger_manager.get_logger(name)
 ```
 
-#### `src/core/exceptions/exceptions.py`
+### `src/core/exceptions/exceptions.py`
+
 ```python
 """Custom exceptions for Aviation Compliance AI."""
 
@@ -532,7 +545,8 @@ class UIError(AviationComplianceError):
 
 ### 3. Document Processing Files
 
-#### `src/data/readers/base_reader.py`
+### `src/data/readers/base_reader.py`
+
 ```python
 """Base document reader interface."""
 
@@ -583,7 +597,8 @@ class BaseReader(ABC):
         return Path(file_path).suffix.lower()[1:]
 ```
 
-#### `src/data/readers/docx_reader.py`
+### `src/data/readers/docx_reader.py`
+
 ```python
 """DOCX document reader."""
 
@@ -722,7 +737,8 @@ class DocxReader(BaseReader):
 
 ### 4. Setup Script
 
-#### `scripts/setup/initial_setup.py`
+### `scripts/setup/initial_setup.py`
+
 ```python
 #!/usr/bin/env python3
 """
